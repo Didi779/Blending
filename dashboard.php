@@ -11,7 +11,7 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-
+/* This is the beginning of the body of the page*/
         body {
             background-color: white;
             display: flex;
@@ -68,7 +68,7 @@
             margin-right: 5px;
         }
 
-        /* Dashboard Container */
+        /*Styling for the dashboard Container */
         .dashboard-container {
             width: 60vw;
             height: 60vh;
@@ -81,7 +81,7 @@
             position: relative;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             margin-top: 80px;
-            border-radius: 8px;
+            border-radius: 8px;  /*End of styling for the dashboard Container */
         }
 
         .top-section {
@@ -111,6 +111,8 @@
             text-align: center;
         }
 
+
+         /*Styling for the button Container */
         .button-container {
             display: flex;
             justify-content: center;
@@ -131,11 +133,13 @@
         }
 
         .button-container button:hover {
-            background: black;
+            background: black;   /*End of styling for the button Container */
         }
-    </style>
-</head>
-<body>
+    </style> <!--End of the styling-->
+</head>   <!--End of the head-->
+<body>  <!--Beginning of creating content for your html body-->
+
+    <!--Start of the creation of the navigation bar-->
     <nav>
         <div class="nav-links">
             <a href="dashboard.php">Home</a>
@@ -146,7 +150,7 @@
             <img src="OIP.jfif" alt="User Icon">
             <span>LOGOUT</span>
         </div>
-    </nav>
+    </nav>  <!--End of navigation bar-->
 
     <div class="dashboard-container">
         <div class="top-section">

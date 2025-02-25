@@ -33,7 +33,8 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
             justify-content: center;
             height: 100vh;
             padding-top: 80px;
-        }
+        } /*End of body styling*/
+     
 
         /* Styling for the navigation Bar */
         nav {
@@ -67,7 +68,9 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
         .nav-links a:hover {
             color: grey;
         }
+      /*End of navigation styling*/
 
+     /*Styling for the logout element*/
         .logout {
             display: flex;
             align-items: center;
@@ -82,6 +85,9 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
             margin-right: 5px;
         }
 
+          /*End of logout styling*/
+     
+
         /* This styling will apply to the form Container */
         .form-container {
             width: 50vw;
@@ -91,7 +97,7 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
             border-radius: 8px;
         }
 
-        h2 {
+        h2 { 
             text-align: center;
             color: black;
             margin-bottom: 20px;
@@ -147,8 +153,8 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
     <nav>
         <div class="nav-links">  <!--The div tag is used to separate or divide the elements-->
             <a href="dashboard.php">Home</a>  <!--These are elements or options found on the nav bar-->
-            <a href="#">Reports</a>
-            <a href="dashboard.php">Back</a>
+            <a href="reports.php">Reports</a>
+            <a href="#" onclick="goBack()">Back</a>
         </div>
 
         <div class="logout" onclick="logout()">
@@ -157,11 +163,13 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
         </div>
     </nav>
 
-    <!-- 🔹 Form Container -->
-    <div class="form-container">
+ <!--End of navigation bar-->
+
+    <!--Form Container -->
+    <div class="form-container">  <!--Here we are creating a form that will be accepting input from the user and storing it on a database-->
         <h2>Add Blending Data</h2>
-        <form action="data_add.php" method="POST">
-            <label for="order_no">Order No:</label>
+        <form action="data_add.php" method="POST">  <!--The post method is used to retrieve data from the user-->
+            <label for="order_no">Order No:</label>  <!--The label tag is used to correctly label each and every field-->
             <input type="text" id="order_no" name="order_no" required>
 
             <label for="base_tank">Base Tank:</label>
@@ -172,26 +180,27 @@ if (!isset($_SESSION['username'])) { // Decision structure to tell the browser t
 
             <label for="flushed">Flushed:</label>
             <select id="flushed" name="flushed">
-                <option value="Yes">Yes</option>
+                <option value="Yes">Yes</option>  <!--This one will create a dropdown where a user can be able to choose 2 provided options-->
                 <option value="No">No</option>
             </select>
 
+         <!--Here now we are creating a submit button -->
             <div class="button-container">
                 <button type="submit">Submit</button>
                 <button type="button" onclick="goBack()">Cancel</button>
             </div>
-        </form>
+        </form>  <!--End of form-->
     </div>
 
-    <script>
-        function goBack() {
+    <script> /*This is a javascript tag that will be used for responsiveness purposes*/
+        function goBack() {  /*This is a function that is created for when a user clicks on the back tab they are able to go back to the previous page*/
             window.location.href = "dashboard.php";
         }
 
-        function logout() {
-            window.location.href = "logout.php";
+        function logout() {  /*Function created to permit the user to be able to logout*/
+            window.location.href = "logout.php";  /*It is referencing a different page that has been specifically created to permit a user to logout*/
         }
-    </script>
+    </script>  <!--End of javascript-->
 
-</body>
-</html>
+</body> <!--End of the body-->
+</html>  <!--End of the html page-->

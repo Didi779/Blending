@@ -153,7 +153,7 @@
             <img src="logo.jpg" alt="ENGEN Logo" class="logo">
             <div class="title">BLENDING MONITOR</div>
         </div>
-        <div class="button-container">
+        <div class="button-container">   <!--Creation of the add and view button-->
             <button onclick="addFunction()">ADD</button>
             <button onclick="viewFunction()">VIEW</button>
         </div>

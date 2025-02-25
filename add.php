@@ -1,25 +1,30 @@
+ <!-- Beginning of php script-->
 <?php
-session_start();
-if (!isset($_SESSION['username'])) {
+session_start(); //Function created to store user information
+if (!isset($_SESSION['username'])) { // Decision structure to tell the browser that if user fails to log in, user must be redirected to index page. 
     header("Location: index.php");
     exit();
 }
 ?>
+<!--End of php script-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blending Data</title>
-    <style>
+
+<!DOCTYPE html>         <!--The start of every html program must be declared with this tag, to tell the browser the type of document its dealing with.-->
+<html lang="en">       <!--The type of language that the page will be written in-->
+<head>                <!--This tag is used to declare elements that will be on your header.-->
+    <meta charset="UTF-8">     <!--This is to tell the browser the type of character encoding used.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!--This tag tells the browser how the content should be displayed.-->
+    <title>Add Blending Data</title>   <!--This title is what will appear when you open this tab.-->
+
+    
+    <style> /*This is the beginning of css, css is used for styling.*/
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-
+            /*This is the styling for the body of the page*/
         body {
             background-color: white;
             display: flex;
@@ -30,7 +35,7 @@ if (!isset($_SESSION['username'])) {
             padding-top: 80px;
         }
 
-        /* 🔹 Navigation Bar */
+        /* Styling for the navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -77,7 +82,7 @@ if (!isset($_SESSION['username'])) {
             margin-right: 5px;
         }
 
-        /* 🔹 Form Container */
+        /* This styling will apply to the form Container */
         .form-container {
             width: 50vw;
             padding: 30px;
@@ -130,14 +135,18 @@ if (!isset($_SESSION['username'])) {
         button:hover {
             background: black;
         }
-    </style>
-</head>
+    </style>   <!-- End of css-->
+    
+</head> <!--End of the head tag.-->
+
+
+<!--Now that the head part of the page is done, we move to the body part of the page.-->
 <body>
 
-    <!-- 🔹 Navigation Bar -->
+    <!--  Navigation Bar -->
     <nav>
-        <div class="nav-links">
-            <a href="dashboard.php">Home</a>
+        <div class="nav-links">  <!--The div tag is used to separate or divide the elements-->
+            <a href="dashboard.php">Home</a>  <!--These are elements or options found on the nav bar-->
             <a href="#">Reports</a>
             <a href="dashboard.php">Back</a>
         </div>

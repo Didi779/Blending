@@ -159,7 +159,7 @@
         </div>
     </div>
 
-    <script>
+    <script>  /*Start of javascript program for responsiveness*/
         function logout() {
             window.location.href = "logout.php";
         }
@@ -179,6 +179,6 @@
                 window.location.href = "dashboard.php"; // Redirect to dashboard if no history
             }
         }
-    </script>
-</body>
-</html>
+    </script>  <!--End of javascript-->
+</body>  <!--End of body tag-->
+</html> <!--End of html page-->

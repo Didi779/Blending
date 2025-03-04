@@ -164,21 +164,21 @@
     </div>
 
     <script>  /*Start of javascript program for responsiveness*/
-        function logout() {
+        function logout() {  //A self created function to enable the user to logout.
             window.location.href = "logout.php";
         }
 
-        function addFunction() {
+        function addFunction() {  //A self created function to enable the user to be able to add data to the database.
             window.location.href = "add.php";
         }
 
-        function viewFunction() {
+        function viewFunction() {//A self created function to enable the user to be able to view the page that has the stored tables.
             alert("View functionality here.");
         }
 
-        function goBack() {
+        function goBack() {  //A self created function to enable the user to be able to go back to the previously clicked page.
             if (document.referrer) {
-                window.history.back(); // Go to the previous page
+                window.history.back(); 
             } else {
                 window.location.href = "dashboard.php"; // Redirect to dashboard if no history
             }

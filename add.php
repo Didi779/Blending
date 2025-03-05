@@ -1,206 +1,201 @@
- <!-- Beginning of php script-->
+<!-- Beginning of php script-->
 <?php
-session_start(); //Function created to store user information
-if (!isset($_SESSION['username'])) { // Decision structure to tell the browser that if user fails to log in, user must be redirected to index page. 
-    header("Location: index.php");
-    exit();
+session_start(); // Start a new session or resume the existing session to store user information
+if (!isset($_SESSION['username'])) { // Check if the 'username' session variable is not set
+    header("Location: index.php"); // Redirect the user to the index page if not logged in
+    exit(); // Stop further script execution after the redirect
 }
 ?>
 <!--End of php script-->
 
 
-<!DOCTYPE html>         <!--The start of every html program must be declared with this tag, to tell the browser the type of document its dealing with.-->
-<html lang="en">       <!--The type of language that the page will be written in-->
-<head>                <!--This tag is used to declare elements that will be on your header.-->
-    <meta charset="UTF-8">     <!--This is to tell the browser the type of character encoding used.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!--This tag tells the browser how the content should be displayed.-->
-    <title>Add Blending Data</title>   <!--This title is what will appear when you open this tab.-->
+<!DOCTYPE html> <!-- Declare the document type as HTML5 -->
+<html lang="en"> <!-- Set the language of the document to English -->
+<head> <!-- Start of the head section -->
+    <meta charset="UTF-8"> <!-- Set the character encoding for the document to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Set the viewport for responsive design -->
+    <title>Add Blending Data</title> <!-- Title of the page that appears in the browser tab -->
 
-    
-    <style> /*This is the beginning of css, css is used for styling.*/
+    <style> /* Start of CSS for styling */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            margin: 0; /* Remove default margin for all elements */
+            padding: 0; /* Remove default padding for all elements */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            font-family: 'Arial', sans-serif; /* Set the default font for the document */
         }
-            /*This is the styling for the body of the page*/
+        /* Styling for the body of the page */
         body {
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            padding-top: 80px;
-        } /*End of body styling*/
-     
+            background-color: white; /* Set the background color of the body */
+            display: flex; /* Use flexbox layout */
+            flex-direction: column; /* Arrange children in a column */
+            align-items: center; /* Center children horizontally */
+            justify-content: center; /* Center children vertically */
+            height: 100vh; /* Set the height to 100% of the viewport height */
+            padding-top: 80px; /* Add padding to the top */
+        } /* End of body styling */
 
         /* Styling for the navigation Bar */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            border-bottom: 2px solid grey;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            position: fixed; /* Fix the navigation bar to the top of the viewport */
+            top: 0; /* Position it at the top */
+            left: 0; /* Position it at the left */
+            width: 100%; /* Set the width to 100% of the viewport */
+            background-color: white; /* Set the background color of the nav */
+            border-bottom: 2px solid grey; /* Add a bottom border */
+            display: flex; /* Use flexbox layout */
+            justify-content: space-between; /* Space out children evenly */
+            align-items: center; /* Center children vertically */
+            padding: 15px 50px; /* Add padding to the nav */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+            z-index: 1000; /* Ensure the nav is above other elements */
         }
 
         .nav-links {
-            display: flex;
-            gap: 50px;
+            display: flex; /* Use flexbox layout for nav links */
+            gap: 50px; /* Add space between links */
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
-            transition: 0.3s;
+            text-decoration: none; /* Remove underline from links */
+            color: black; /* Set link color to black */
+            font-size: 18px; /* Set font size for links */
+            font-weight: bold; /* Make links bold */
+            transition: 0.3s; /* Add transition effect for hover */
         }
 
         .nav-links a:hover {
-            color: grey;
+            color: grey; /* Change link color on hover */
         }
-      /*End of navigation styling*/
+        /* End of navigation styling */
 
-     /*Styling for the logout element*/
+        /* Styling for the logout element */
         .logout {
-            display: flex;
-            align-items: center;
-            color: black;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
+            display: flex; /* Use flexbox layout */
+            align-items: center; /* Center items vertically */
+            color: black; /* Set text color to black */
+            font-size: 14px; /* Set font size */
+            font-weight: bold; /* Make text bold */
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
 
         .logout img {
-            width: 20px;
-            margin-right: 5px;
+            width: 20px; /* Set width for the logout icon */
+            margin-right: 5px; /* Add space to the right of the icon */
         }
-
-          /*End of logout styling*/
-     
+        /* End of logout styling */
 
         /* This styling will apply to the form Container */
         .form-container {
-            width: 50vw;
-            padding: 30px;
-            background: white;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            width: 50vw; /* Set width to 50% of the viewport width */
+            padding: 30px; /* Add padding inside the container */
+            background: white; /* Set background color to white */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            border-radius: 8px; /* Round the corners */
         }
 
         h2 { 
-            text-align: center;
-            color: black;
-            margin-bottom: 20px;
-            font-size: 24px;
+            text-align: center; /* Center the heading text */
+            color: black; /* Set heading color to black */
+            margin-bottom: 20px; /* Add space below the heading */
+            font-size: 24px; /* Set font size for the heading */
         }
 
         label {
-            font-weight: bold;
-            color: black;
-            display: block;
-            margin-top: 10px;
+            font-weight: bold; /* Make label text bold */
+            color: black; /* Set label color to black */
+            display: block; /* Make label a block element */
+            margin-top: 10px; /* Add space above the label */
         }
 
         input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 2px solid grey;
-            border-radius: 5px;
-            font-size: 16px;
+            width: 100%; /* Set width to 100% of the container */
+            padding: 12px; /* Add padding inside input/select */
+            margin-top: 5px; /* Add space above input/select */
+            border: 2px solid grey; /* Set border color */
+            border-radius: 5px; /* Round the corners */
+            font-size: 16px; /* Set font size */
         }
 
         .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            display: flex; /* Use flexbox layout */
+            justify-content: space-between; /* Space buttons evenly */
+            margin-top: 20px; /* Add space above the button container */
         }
 
         button {
-            width: 48%;
-            padding: 12px;
-            border: none;
-            background: grey;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 5px;
+            width: 48%; /* Set width to 48% of the container */
+            padding: 12px; /* Add padding inside the button */
+            border: none; /* Remove border */
+            background: grey; /* Set background color */
+            color: white; /* Set text color to white */
+            font-size: 16px; /* Set font size */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: 0.3s; /* Add transition effect for hover */
+            border-radius: 5px; /* Round the corners */
         }
 
         button:hover {
-            background: black;
+            background: black; /* Change background color on hover */
         }
-    </style>   <!-- End of css-->
+    </style>   <!-- End of CSS -->
     
-</head> <!--End of the head tag.-->
+</head> <!-- End of the head tag -->
 
 
-<!--Now that the head part of the page is done, we move to the body part of the page.-->
+<!-- Now that the head part of the page is done, we move to the body part of the page. -->
 <body>
 
-    <!--  Navigation Bar -->
+    <!-- Navigation Bar -->
     <nav>
-        <div class="nav-links">  <!--The div tag is used to separate or divide the elements-->
-            <a href="dashboard.php">Home</a>  <!--These are elements or options found on the nav bar-->
-            <a href="reports.php">Reports</a>
-            <a href="#" onclick="goBack()">Back</a>
+        <div class="nav-links"> <!-- Div to contain navigation links -->
+            <a href="dashboard.php">Home</a> <!-- Link to the dashboard page -->
+            <a href="reports.php">Reports</a> <!-- Link to the reports page -->
+            <a href="#" onclick="goBack()">Back</a> <!-- Link to go back to the previous page -->
         </div>
 
-        <div class="logout" onclick="logout()">
-            <img src="OIP.jfif" alt="User Icon">
-            <span>LOGOUT</span>
+        <div class="logout" onclick="logout()"> <!-- Logout section with click event -->
+            <img src="OIP.jfif" alt="User  Icon"> <!-- User icon image -->
+            <span>LOGOUT</span> <!-- Logout text -->
         </div>
     </nav>
+    <!-- End of navigation bar -->
 
- <!--End of navigation bar-->
+    <!-- Form Container -->
+    <div class="form-container"> <!-- Container for the form -->
+        <h2>Add Blending Data</h2> <!-- Heading for the form -->
+        <form action="data_add.php" method="POST"> <!-- Form that submits data to data_add.php using POST method -->
+            <label for="order_no">Order No:</label> <!-- Label for the order number input -->
+            <input type="text" id="order_no" name="order_no" required> <!-- Input for order number, required field -->
 
-    <!--Form Container -->
-    <div class="form-container">  <!--Here we are creating a form that will be accepting input from the user and storing it on a database-->
-        <h2>Add Blending Data</h2>
-        <form action="data_add.php" method="POST">  <!--The post method is used to retrieve data from the user-->
-            <label for="order_no">Order No:</label>  <!--The label tag is used to correctly label each and every field-->
-            <input type="text" id="order_no" name="order_no" required>
+            <label for="base_tank">Base Tank:</label> <!-- Label for the base tank input -->
+            <input type="text" id="base_tank" name="base_tank" required> <!-- Input for base tank, required field -->
 
-            <label for="base_tank">Base Tank:</label>
-            <input type="text" id="base_tank" name="base_tank" required>
+            <label for="product">Product:</label> <!-- Label for the product input -->
+            <input type="text" id="product" name="product" required> <!-- Input for product, required field -->
 
-            <label for="product">Product:</label>
-            <input type="text" id="product" name="product" required>
-
-            <label for="flushed">Flushed:</label>
-            <select id="flushed" name="flushed">
-                <option value="Yes">Yes</option>  <!--This one will create a dropdown where a user can be able to choose 2 provided options-->
-                <option value="No">No</option>
+            <label for="flushed">Flushed:</label> <!-- Label for the flushed dropdown -->
+            <select id="flushed" name="flushed"> <!-- Dropdown for flushed option -->
+                <option value="Yes">Yes</option> <!-- Option for Yes -->
+                <option value="No">No</option> <!-- Option for No -->
             </select>
 
-         <!--Here now we are creating a submit button -->
+            <!-- Button container for submit and cancel buttons -->
             <div class="button-container">
-                <button type="submit">Submit</button>
-                <button type="button" onclick="goBack()">Cancel</button>
+                <button type="submit">Submit</button> <!-- Submit button for the form -->
+                <button type="button" onclick="goBack()">Cancel</button> <!-- Cancel button that triggers goBack function -->
             </div>
-        </form>  <!--End of form-->
+        </form> <!-- End of form -->
     </div>
 
-    <script> /*This is a javascript tag that will be used for responsiveness purposes*/
-        function goBack() {  /*This is a function that is created for when a user clicks on the back tab they are able to go back to the previous page*/
-            window.location.href = "dashboard.php";
+    <script> /* Start of JavaScript for interactivity */
+        function goBack() { /* Function to navigate back to the dashboard */
+            window.location.href = "dashboard.php"; /* Redirect to dashboard page */
         }
 
-        function logout() {  /*Function created to permit the user to be able to logout*/
-            window.location.href = "logout.php";  /*It is referencing a different page that has been specifically created to permit a user to logout*/
+        function logout() { /* Function to log out the user */
+            window.location.href = "logout.php"; /* Redirect to logout page */
         }
-    </script>  <!--End of javascript-->
+    </script> <!-- End of JavaScript -->
 
-</body> <!--End of the body-->
-</html>  <!--End of the html page-->
+</body> <!-- End of the body -->
+</html> <!-- End of the HTML page -->
